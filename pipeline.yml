@@ -210,7 +210,6 @@ Resources:
               Configuration:
                 ProjectName:
                   Ref: BuildBackend
-              RunOrder: 1
             -
               Name: Build-Frontend
               InputArtifacts:
@@ -223,7 +222,6 @@ Resources:
               Configuration:
                 ProjectName:
                   Ref: BuildFrontend
-              RunOrder: 2
       ArtifactStore:
         Type: S3
         Location:
