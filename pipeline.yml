@@ -135,7 +135,7 @@ Resources:
               Fn::Sub: ${AWS::Region}
       Source:
         Type: CODEPIPELINE
-        BuildSpec: 100-days-of-code/back-end/buildspec.yml
+        BuildSpec: back-end/buildspec.yml
       TimeoutInMinutes: 15
       Tags:
         - Key: Name
@@ -162,7 +162,7 @@ Resources:
               Fn::Sub: ${AWS::Region}
       Source:
         Type: CODEPIPELINE
-        BuildSpec: 100-days-of-code/front-end/buildspec.yml
+        BuildSpec: front-end/buildspec.yml
       TimeoutInMinutes: 15
       Tags:
         - Key: Name
