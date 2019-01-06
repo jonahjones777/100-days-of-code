@@ -1,4 +1,4 @@
-# Primary Resources on the #100DaysOfCode
+# Primary Resources on the #100DaysOfDevops
 
 [The #100DaysOfCode Official Site](http://100daysofcode.com/)
 

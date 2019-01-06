@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo starting to deploy new serverless code
+  build:
+    commands:
+      - echo starting to install serverless
+      - npm install -g serverless 
+  post_build:
+    commands:
+      - echo Build completed on `date`
