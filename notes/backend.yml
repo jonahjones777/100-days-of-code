@@ -1,6 +1,12 @@
 
 Description: Create a CodePipeline to include Nested CloudFormation, CodeBuild and Approval steps.
 
+Parameters:
+  S3Artifact:
+    Type: String
+    Description: Namme of the bucket we created in the pipeline deployment
+    NoEcho: true
+
 Resources:
   LambdaForCloudFormation:
     Type: 'AWS::IAM::Role'
@@ -116,7 +122,6 @@ Resources:
       UserPoolName: !Sub User-Pool-${AWS::StackName}
       AutoVerifiedAttributes:
         - email
-      MfaConfiguration: "OPTIONAL"
       # SmsConfiguration:
       #   ExternalId: !Sub ${AuthName}-external
       #   SnsCallerArn: !GetAtt SNSRole.Arn
@@ -147,7 +152,9 @@ Resources:
     Properties:
       FunctionName: CloudFormationCognitoUserPoolDomain
       Runtime: nodejs8.10
-      Code: ./CloudFormationCognitoUserPoolDomain.js
+      Code: 
+        S3Bucket: !Ref S3Artifact
+        S3Key: "CloudFormationCognitoUserPoolDomain.zip"
       Handler: CloudFormationCognitoUserPoolDomain.handler
       Role: !GetAtt LambdaForCloudFormation.Arn
     DependsOn: CloudFormationSendResponse
@@ -157,7 +164,9 @@ Resources:
     Properties:
       FunctionName: CloudFormationSendResponse
       Runtime: nodejs8.10
-      Code: ./CloudFormationSendResponse
+      Code: 
+        S3Bucket: !Ref S3Artifact
+        S3Key: "CloudFormationSendResponse.zip"
       Handler: index.handler
       Role: !GetAtt LambdaForCloudFormation.Arn
       
@@ -166,7 +175,8 @@ Resources:
     Properties:
       ServiceToken: !GetAtt CloudFormationCognitoUserPoolDomain.Arn
       UserPoolId: !Ref UserPool
-      Domain: notes-app
+      # THIS MUST BE GLOBALLY UNIQUE
+      Domain: make-notes
 
   # CloudFormationCognitoUserPoolClientSettings:
   #   Type: 'AWS::Lambda::Function'
