@@ -19,8 +19,16 @@
 
 ### Day 3: January 7, 2018
 
-**Today's Progress**: Today I created the cloudformation for my new serverless projects backend, that included a dynamodb table, cognito pool, iam role, and custom 2 cloudformation functions to do cognito auth domain, and client settings
+**Today's Progress**: Today I some scripts to spin up and down and watch the backend cloudformation, and get information from the cognito pools, and create/confirm a fake user using boto3. This will help the initial spin up of the app each day to save costs.
 
-**Thoughts:** I ran into a few syntax errors on the cloudformation with items in lists today, also hit a wall with cognito not haviing everything fully supported through cloudformaiton, had to find some custom functions online to handle doing a few items. Creating backend compenents for app today was fun.
+**Thoughts:** I like the idea of spinning up and down this app fully and completly everyday, and only working through python or bash. I think this will not only help save money, but make sure that the code is really done well since I can destroy, and deploy the entire application infrastructure in a matter of minutes at any-point. 
+
+**Link to work:**  TBD
+
+### Day 4: January 8, 2018
+
+**Today's Progress**: Today I some scripts to spin up and down and watch the backend cloudformation, and get information from the cognito pools, and create/confirm a fake user using boto3. This will help the initial spin up of the app each day to save costs.
+
+**Thoughts:** I like the idea of spinning up and down this app fully and completly everyday, and only working through python or bash. I think this will not only help save money, but make sure that the code is really done well since I can destroy, and deploy the entire application infrastructure in a matter of minutes at any-point. 
 
 **Link to work:**  TBD
