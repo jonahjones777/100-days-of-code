@@ -27,8 +27,8 @@
 
 ### Day 4: January 8, 2018
 
-**Today's Progress**: Today I some scripts to spin up and down and watch the backend cloudformation, and get information from the cognito pools, and create/confirm a fake user using boto3. This will help the initial spin up of the app each day to save costs.
+**Today's Progress**: Today I a ton of work for work... creating a service mesh using consul connect as sidecars in AWS fargate with ... terraform, spent more hours than I'd like to admit on this.
 
-**Thoughts:** I like the idea of spinning up and down this app fully and completly everyday, and only working through python or bash. I think this will not only help save money, but make sure that the code is really done well since I can destroy, and deploy the entire application infrastructure in a matter of minutes at any-point. 
+**Thoughts:** 
 
 **Link to work:**  TBD
