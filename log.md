@@ -32,3 +32,11 @@
 **Thoughts:** 
 
 **Link to work:**  TBD
+
+### Day 5: January 9, 2018
+
+**Today's Progress**: Create frontend JS framework template, Worked on python lib/class structure, and added logging informational bits in for the serverless calls. Serverless needs to output config in log format for cloudwatch logs to better pick it up.
+
+**Thoughts:** Class structure in python has always been a little confusing initiating a few clients, and calling apis. I think todays creation of the self__init__ structure for self initiaing boto client was really beneficial.
+
+**Link to work:**  TBD
