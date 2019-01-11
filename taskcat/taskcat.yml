@@ -1,0 +1,21 @@
+global:
+  owner: owner@company.com
+  qsname: sample-cloudformation-project <- Must match the root directory of project (usually the name of git repo)
+  #s3bucket: projectx-templates <- (Optional) Only needed if you want to use a specific bucket
+  regions:
+    - us-east-1
+    - us-east-2
+    - us-west-1
+    - us-west-2
+tests:
+  # The following test will test in both us-west-1 and us-east-1 using sample-cloudformation-input.json as inputs
+  scenario-1:
+    regions:
+      - us-west-1
+      - us-east-1
+    template_file: sample-cloudformation-project-novpc.template
+    parameter_input: sample-cloudformation-input-novpc.json
+  # The following test will test in both all 4 region defined in the global region section using sample-cloudformation-input.json as inputs
+      scenario-all-regions:
+    parameter_input: sample-cloudformation-input-withvpc.json
+    template_file: sample-cloudformation-project-withvpc.template
