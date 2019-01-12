@@ -11,7 +11,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-
+      - cd ../../notes-sls
       - npm install
       - npm install aws-sdk
       - npm install uuid
+      - serverless deploy
+
