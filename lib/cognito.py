@@ -6,7 +6,6 @@ import time
 import os 
 from pprint import pprint
 
-
 class Cognito(object):
     def __init__(self, logger, **kwargs):
         self.logger = logger
@@ -31,13 +30,13 @@ class Cognito(object):
     def list_user_pools(self):
         try:
             pool_list = self.cognito_client.list_user_pools(
-                MaxResults=60
+                MaxResults=30
             )
-            for names in pool_list['UserPools']:
-                if names['Name'] == 'User-Pool-notes-backend':
-                    poolid=names['Id']
+            for stuff in  (pool_list['UserPools']):
+                if (stuff['Name']) == 'User-Pool-notes-backend':
+                    print  (stuff['Name'])
+                    poolid = stuff['Id']
                     return poolid
-                else:
                     break
         except Exception as e:
             self.logger.exception(e)
@@ -81,7 +80,12 @@ class Cognito(object):
             self.logger.exception(e)
             raise
 
-# poolid = list_user_pools(cognito)
+# log_level = 'info'
+# logger = Logger(loglevel=log_level)
+# init_failed = False
+
+# pool = Cognito(logger)
+# poolid = pool.list_user_pools()
 # print ('The User Pool ID is {}\n'.format(poolid))
 
 # clientid = list_user_pool_clients(cognito, poolid)

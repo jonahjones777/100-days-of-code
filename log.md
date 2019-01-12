@@ -40,3 +40,18 @@
 **Thoughts:** Class structure in python has always been a little confusing initiating a few clients, and calling apis. I think todays creation of the self__init__ structure for self initiaing boto client was really beneficial.
 
 **Link to work:**  TBD
+
+### Day 6: January 10, 2018
+
+**Today's Progress**: Create cognito api python calls to setup the base user pool needed on startup scripts. Created API endpoint structure for create, and the serverless yml file
+
+**Thoughts:** Got some bugs with pycache serving back cached data on boto3, so spent a bit of time on that. Excited to create all the CRUD apis tomorrow
+**Link to work:**  TBD
+
+### Day 7: January 11, 2018
+
+**Today's Progress**: Created CRUD + list all API endpoints, with mock data to perform functional local tests.
+
+**Thoughts:** Use console log on try catch in node to save time and headaches like I had.
+
+**Link to work:**  TBD
