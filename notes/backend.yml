@@ -138,14 +138,14 @@ Resources:
       ExplicitAuthFlows: 
         - ADMIN_NO_SRP_AUTH
 
-  # IdentityPool:
-  #   Type: "AWS::Cognito::IdentityPool"
-  #   Properties:
-  #     IdentityPoolName: !Sub ${AuthName}Identity
-  #     AllowUnauthenticatedIdentities: true
-  #     CognitoIdentityProviders: 
-  #       - ClientId: !Ref UserPoolClient
-  #         ProviderName: !GetAtt UserPool.ProviderName
+  IdentityPool:
+    Type: "AWS::Cognito::IdentityPool"
+    Properties:
+      IdentityPoolName: !Sub ${AuthName}Identity
+      AllowUnauthenticatedIdentities: true
+      CognitoIdentityProviders: 
+        - ClientId: !Ref UserPoolClient
+          ProviderName: !GetAtt UserPool.ProviderName
 
   CloudFormationCognitoUserPoolDomain:
     Type: AWS::Lambda::Function
