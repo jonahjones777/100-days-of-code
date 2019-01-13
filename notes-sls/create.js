@@ -1,11 +1,15 @@
+require('dotenv').config()
+
 import uuid from "uuid";
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
 
+console.log(process.env.DB_TABLE)
+
 export async function main(event, context) {
   const data = JSON.parse(event.body);
   const params = {
-    TableName: "notes-backend",
+    TableName: process.env.DB_TABLE,
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       noteId: uuid.v1(),

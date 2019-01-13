@@ -1,9 +1,11 @@
+require('dotenv').config()
+
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
   const params = {
-    TableName: "notes-backend",
+    TableName: process.env.DB_TABLE,
     // 'KeyConditionExpression' defines the condition for the query
     // - 'userId = :userId': only return items with matching 'userId'
     //   partition key
