@@ -55,3 +55,11 @@
 **Thoughts:** Use console log on try catch in node to save time and headaches like I had.
 
 **Link to work:**  TBD
+
+### Day 8: January 12, 2018
+
+**Today's Progress**: Created .env file, and learned how to use the dotenv npm module, and the serverless dotenv module for local testing. Also created first deployment, and worked on trying to make it work through CICD pipeline.
+
+**Thoughts:** CICD pipeline needs role to work with Cloudformation when using serverless, go back and add that in the role in the CICD CF stack
+
+**Link to work:**  TBD
