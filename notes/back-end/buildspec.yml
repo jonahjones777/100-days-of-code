@@ -11,7 +11,10 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - cd ../../notes-sls
+      - pwd
+      - cd ../..
+      - pwd
+      - cd notes-sls
       - npm install
       - serverless deploy
 
