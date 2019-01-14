@@ -1,0 +1,23 @@
+Serverless: DOTENV: Loading environment variables from .env:
+Serverless: 	 - DB_TABLE
+Service Information
+service: notes-api
+stage: dev
+region: us-east-1
+stack: notes-api-dev
+api keys:
+  None
+endpoints:
+  POST - https://1ii5lfc5qd.execute-api.us-east-1.amazonaws.com/dev/notes
+  GET - https://1ii5lfc5qd.execute-api.us-east-1.amazonaws.com/dev/notes/{id}
+  GET - https://1ii5lfc5qd.execute-api.us-east-1.amazonaws.com/dev/notes
+  PUT - https://1ii5lfc5qd.execute-api.us-east-1.amazonaws.com/dev/notes/{id}
+  DELETE - https://1ii5lfc5qd.execute-api.us-east-1.amazonaws.com/dev/notes/{id}
+functions:
+  create: notes-api-dev-create
+  get: notes-api-dev-get
+  list: notes-api-dev-list
+  update: notes-api-dev-update
+  delete: notes-api-dev-delete
+layers:
+  None

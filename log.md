@@ -63,3 +63,11 @@
 **Thoughts:** CICD pipeline needs role to work with Cloudformation when using serverless, go back and add that in the role in the CICD CF stack
 
 **Link to work:**  TBD
+
+### Day 9: January 13, 2018
+
+**Today's Progress**: Wrote CF for cognito identity pool, and created unit tests, and python code to automatically generate unit tests on different deployments of the application. It uses boto3, and file manipulation to get the pieces out, and writes a basic unit test post call with cognito authentication.
+
+**Thoughts:** Getting back to the good ol python days. Anything is possible with string/list/dict manipulation!
+
+**Link to work:**  TBD

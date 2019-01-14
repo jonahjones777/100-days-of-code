@@ -68,6 +68,41 @@ Resources:
                 Effect: Allow
                 Action: 'lambda:InvokeFunction'
                 Resource: 'arn:aws:lambda:*:*:function:*'
+
+  CognitoAuthorizedRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument: 
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal: 
+              Federated: "cognito-identity.amazonaws.com"
+            Action: 
+              - "sts:AssumeRoleWithWebIdentity"
+      Policies:
+        - PolicyName: "CognitoAuthorizedPolicy"
+          PolicyDocument: 
+            Version: "2012-10-17"
+            Statement: 
+              - Effect: "Allow"
+                Action:
+                  - "mobileanalytics:PutEvents"
+                  - "cognito-sync:*"
+                  - "cognito-identity:*"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "lambda:InvokeFunction"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "s3:*"
+                Resource: "*"
+              - Effect: "Allow"
+                Action:
+                  - "execute-api:Invoke"
+                Resource: "*"
                 
   DynamoTable: 
     Type: AWS::DynamoDB::Table
@@ -141,11 +176,20 @@ Resources:
   IdentityPool:
     Type: "AWS::Cognito::IdentityPool"
     Properties:
-      IdentityPoolName: !Sub ${AuthName}Identity
+      IdentityPoolName: NotesIdentity
       AllowUnauthenticatedIdentities: true
       CognitoIdentityProviders: 
         - ClientId: !Ref UserPoolClient
           ProviderName: !GetAtt UserPool.ProviderName
+
+  IdentityPoolRoleMapping:
+    Type: "AWS::Cognito::IdentityPoolRoleAttachment"
+    Properties:
+      IdentityPoolId: !Ref IdentityPool
+      Roles:
+        authenticated: !GetAtt CognitoAuthorizedRole.Arn
+        unauthenticated: !GetAtt CognitoAuthorizedRole.Arn
+    DependsOn: CognitoAuthorizedRole
 
   CloudFormationCognitoUserPoolDomain:
     Type: AWS::Lambda::Function

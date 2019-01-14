@@ -80,6 +80,7 @@ class Cognito(object):
             self.logger.exception(e)
             raise
 
+
 # log_level = 'info'
 # logger = Logger(loglevel=log_level)
 # init_failed = False
