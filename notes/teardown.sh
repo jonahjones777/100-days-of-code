@@ -3,7 +3,7 @@
 aws cloudformation delete-stack \
     --stack-name notes-backend --region us-east-1 --profile here
 
-# cd ../notes-sls
+# cd ../notes-backend
 # serverless remove --aws-profile here
 # cd ../notes
 

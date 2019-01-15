@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - ls -la
-      - cd notes-sls
+      - cd notes-backend
       - npm install
       - serverless deploy
 

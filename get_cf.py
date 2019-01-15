@@ -5,6 +5,7 @@ import random
 import time
 import os 
 import re
+from subprocess import call
 from pprint import pprint
 from lib.logger import Logger
 from lib.cognito import Cognito
@@ -30,8 +31,8 @@ def cognito_stuff(username, ):
         logger.info('The User Pool ID is {}\n'.format(poolid))
         clientid = cognito.list_user_pool_clients(poolid)
         logger.info('The App Client ID is {}\n'.format(clientid))
-        # logger.info(cognito.sign_up(clientid, username))
-        # logger.info(cognito.confirm_sign_up(poolid, username))
+        #logger.info(cognito.sign_up(clientid, username))
+        #logger.info(cognito.confirm_sign_up(poolid, username))
         return poolid, clientid
     except Exception as e:
         logger.exception(e)
@@ -48,24 +49,23 @@ def cognito_identity():
 
 
 def write_unit_test(test_params):
-    cwd = os.getcwd()
-    unit_script = open("cli-test.sh", "w+")
-    unit_script.write("npx aws-api-gateway-cli-test \ \n")
-    for k, v in test_params.items():
-        unit_script.writelines("--{}='{}' \ ".format(k, v))
-        unit_script.write('\n')
+        pwd = os.getcwd()
+        supportFiles = pwd + "/notes-backend"
+        os.chdir(supportFiles)
+        unit_script = open("cli-test.sh", "w+")
+        os.chmod('cli-test.sh', 0o755)
+        unit_script.write("#!/bin/bash \n")
+        unit_script.write('npx aws-api-gateway-cli-test \\{}'.format("\n"))
+        for k, v in test_params.items():
+                unit_script.writelines("--{} '{}' \\".format(k, v))
+                unit_script.write('\n')
 
 
-unit_test_dict = {}
 
-
-
-poolid, clientid = cognito_stuff(user_name)
-identtity_pool_id = cognito_identity()
 
 ## GET API GATWAY CRAPPP ##
 pwd = os.getcwd()
-supportFiles = pwd + "/notes-sls"
+supportFiles = pwd + "/notes-backend"
 os.chdir(supportFiles)
 if os.path.exists('sls.txt') == True:
         print ('file exists passing')
@@ -81,11 +81,17 @@ with open('sls.txt', 'r') as f:
                         split_1 = real_url[-1].split('/')
                         length = len(split_1)
                         path = split_1[-1]
+                        path = path.rstrip("\n")
                         print ("printing api gateway url path: {}".format(path))
                         invoke = ['/'.join(split_1[0:(length - 1)])]
                         print ("printing api invoke url: {}".format(invoke[0]))
 os.chdir(pwd)
 
+
+unit_test_dict = {}
+
+poolid, clientid = cognito_stuff(user_name)
+identtity_pool_id = cognito_identity()
 
 unit_test_dict['username'] = user_name
 unit_test_dict['password'] = password
@@ -96,7 +102,11 @@ unit_test_dict['identity-pool-id'] = identtity_pool_id
 unit_test_dict['invoke-url'] = invoke[0]
 unit_test_dict['api-gateway-region'] = region
 unit_test_dict['path-template'] = ('/' + path)
-unit_test_dict['body'] = {"content":"hello world","attachment":"hello.jpg"}
+unit_test_dict['method'] ="POST"
+unit_test_dict['body'] = '{"content":"hello world","attachment":"hello.jpg"}'
+
 
 
 write_unit_test(unit_test_dict)
+
+rc = call("./cli-test.sh")
