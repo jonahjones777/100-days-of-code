@@ -71,3 +71,13 @@
 **Thoughts:** Getting back to the good ol python days. Anything is possible with string/list/dict manipulation!
 
 **Link to work:**  TBD
+
+### Day 10: January 14, 2018
+
+**Today's Progress**: Finishing python unit test scfipt and got that tested and working, and started frontend structure, and added favicons to the public directory
+ 
+**Thoughts:** In python string formating to print "\" you need to use "\\" annoying thing that cost me some time today;
+
+**Link to work:**  TBD
+
+
