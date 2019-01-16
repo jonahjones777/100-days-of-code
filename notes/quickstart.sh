@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 region=us-east-1
 
@@ -11,15 +11,19 @@ aws cloudformation create-stack \
 
 #./stackstatus.sh --region us-east-1 --watch --stack-name notes-backend --profile here
 
-After cloudformation is deployed run the cognito stuff
-secs=$((90))
-while [ $secs -gt 0 ]; do
-   echo -ne "$secs\033[0K\r"
-   sleep 1
-   : $((secs--))
-done
+#After cloudformation is deployed run the cognito stuff
+
+# secs=$((90))
+# while [ $secs -gt 0 ]; do
+#    echo -ne "$secs\033[0K\r"
+#    sleep 1
+#    : $((secs--))
+# done
 
 cd .. 
 python -u get_cf.py
 cd notes-backend
 #serverless deploy --aws-profile here
+cd ..
+cd notes-front
+npm start

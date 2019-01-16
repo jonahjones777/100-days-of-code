@@ -80,4 +80,10 @@
 
 **Link to work:**  TBD
 
+### Day 11: January 14, 2018
 
+**Today's Progress**: Adding in Frontend Routing, fonts, and error page on login/signup. Also about to start using AWS amplify so writing some more python libraries for created autmated unittests/javascript configs for amplify.
+ 
+**Thoughts:** A healthy mix of python/javascript could make a really flexible development platform creating some query libraries
+
+**Link to work:**  TBD
